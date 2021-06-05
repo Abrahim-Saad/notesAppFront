@@ -1,0 +1,60 @@
+
+<section id="signUpSection">
+
+    <div class="container">
+
+        <form [formGroup]="signUpForm" (ngSubmit)="signUpForm.valid&&sendSignUpFormData()">
+            <div class="form w-50 m-auto">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <input [class.is-valid]="signUpForm.get('first_name').status=='VALID'" formControlName="first_name" type="text" placeholder="Enter First Name" class="form-control">
+                        <div *ngIf="signUpForm.get('first_name').errors&&signUpForm.get('first_name').touched" class="alert alert-danger" role="alert">
+                            First Name is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input [class.is-valid]="signUpForm.get('last_name').status=='VALID'" formControlName="last_name" type="text" placeholder="Enter Last Name" class="form-control">
+                        <div *ngIf="signUpForm.get('last_name').errors&&signUpForm.get('last_name').touched" class="alert alert-danger" role="alert">
+                            Last Name is required
+                        </div>
+                    </div>
+
+                </div>
+
+                <input [class.is-valid]="signUpForm.get('email').status=='VALID'" formControlName="email" type="email" placeholder="Enter Email" class="form-control my-3">
+                <div *ngIf="signUpForm.get('email').errors&&signUpForm.get('email').touched" class="alert alert-danger" role="alert">
+                    Email is required
+                </div>
+
+                <input [class.is-valid]="signUpForm.get('age').status=='VALID'" formControlName="age" type="number" placeholder="Enter You Age" class="form-control">
+                <div *ngIf="signUpForm.get('age').errors&&signUpForm.get('age').touched" class="alert alert-danger" role="alert">
+                    Age is required
+                </div>
+
+                <input [class.is-valid]="signUpForm.get('password').status=='VALID'" formControlName="password" type="password" placeholder="Enter password" class="form-control my-3">
+                <div *ngIf="signUpForm.get('password').errors&&signUpForm.get('password').touched" class="alert alert-danger" role="alert">
+                    Password is required
+                </div>
+
+                <button [disabled]="signUpForm.invalid" [ngStyle]="signUpForm.invalid? validFormStyle:invalidFormStyle" class="btn btn-info w-100">
+                    <!-- This span works If the sign-up button isn't clicked -->
+                    <span *ngIf="!isSignUpButtonClicked">Sign Up</span>
+
+                    <!-- This span works If the sign-up button is clicked -->
+                    <span *ngIf="isSignUpButtonClicked">Wating....</span>
+                </button>
+
+                <div *ngIf="isAccountCreatedSuccessfully" class="alert alert-success text-center" role="alert">
+                    Account Created Successfully!
+                </div>
+
+                <div *ngIf="isUniuqeEmail" class="alert alert-danger text-center" role="alert">
+                    This Email Already Exists
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>

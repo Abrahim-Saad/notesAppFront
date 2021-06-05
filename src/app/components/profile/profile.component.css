@@ -1,0 +1,15 @@
+#profileSection {
+    min-height: 100vh;
+    background-color: #666;
+}
+
+.note {
+    min-height: 200px;
+    width: 200px;
+    background-color: #fcc;
+}
+
+i {
+    cursor: pointer;
+}
+
